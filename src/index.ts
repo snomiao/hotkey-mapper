@@ -1,5 +1,5 @@
 import { mapObjIndexed } from "rambda";
-type handler = (e: KeyboardEvent) => void;
+type handler = (e: Partial<KeyboardEvent>) => void;
 /**
  * @reference view js keycode here: https://www.toptal.com/developers/keycode
  * @example
@@ -15,14 +15,18 @@ type handler = (e: KeyboardEvent) => void;
  *   {capture: true}
  * )
  */
-export default function hotkeyMapper<K extends keyof GlobalEventHandlersEventMap>(
+export default function hotkeyMapper<
+  K extends keyof GlobalEventHandlersEventMap
+>(
   mapping: Record<string, handler>,
-  options?: AddEventListenerOptions & { on?: K; target?: EventTarget },
+  options?: AddEventListenerOptions & { on?: K; target?: EventTarget }
 ) {
-  const handler = (event: KeyboardEvent) => {
-    const key = event.key.toLowerCase();
-    const code = event.code.toLowerCase();
-    const simp = event.code.replace(/^(?:Key|Digit|Numpad)/, "").toLowerCase();
+  const handler: handler = (event) => {
+    if (!event.key) throw new Error("Invalid KeyboardEvent");
+    if (!event.code) throw new Error("Invalid KeyboardEvent");
+    const key = event.key?.toLowerCase();
+    const code = event.code?.toLowerCase();
+    const simp = event.code?.replace(/^(?:Key|Digit|Numpad)/, "").toLowerCase();
     const map = new Proxy(event, {
       get: (target, p: string) =>
         Boolean(
@@ -30,7 +34,7 @@ export default function hotkeyMapper<K extends keyof GlobalEventHandlersEventMap
             [`${key}Key`]: true,
             [`${code}Key`]: true,
             [`${simp}Key`]: true,
-          }[p] ?? (target as any)[p],
+          }[p] ?? (target as any)[p]
         ),
     }) as unknown as Record<keyof KeyboardEvent, boolean>;
     const mods = "meta+alt+shift+ctrl";
@@ -41,13 +45,15 @@ export default function hotkeyMapper<K extends keyof GlobalEventHandlersEventMap
         .split("+")
         .map((key) => key.toLowerCase().trim())
         .map((k, i) => [k, i >= 4 === (map as any)[`${k}Key`]]);
-      if (!Object.entries(Object.fromEntries(conds)).every(([, ok]) => ok)) return;
-      event.stopPropagation();
-      event.preventDefault();
+      if (!Object.entries(Object.fromEntries(conds)).every(([, ok]) => ok))
+        return;
+      event.stopPropagation?.();
+      event.preventDefault?.();
       return fn(event);
     }, mapping);
   };
-  const target = options.target ?? globalThis;
+
+  const target = options?.target ?? globalThis;
   target.addEventListener(options?.on ?? "keydown", handler, options);
   return function unload() {
     target.removeEventListener(options?.on ?? "keydown", handler, options);
@@ -55,11 +61,17 @@ export default function hotkeyMapper<K extends keyof GlobalEventHandlersEventMap
 }
 export function hotkeyDown(hotkey: string, options?: AddEventListenerOptions) {
   return new Promise<void>((r) =>
-    hotkeyMapper({ [hotkey]: () => r() }, { once: true, ...options, on: "keydown" }),
+    hotkeyMapper(
+      { [hotkey]: () => r() },
+      { once: true, ...options, on: "keydown" }
+    )
   );
 }
 export function hotkeyUp(hotkey: string, options?: AddEventListenerOptions) {
   return new Promise<void>((r) =>
-    hotkeyMapper({ [hotkey]: () => r() }, { once: true, ...options, on: "keyup" }),
+    hotkeyMapper(
+      { [hotkey]: () => r() },
+      { once: true, ...options, on: "keyup" }
+    )
   );
 }
