@@ -28,10 +28,13 @@
   ],
   "scripts": {
     "build": "npx snobuild",
-    "prepack": "npm run build"
+    "prepack": "npm run build",
+    "test": "echo no tests yet"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
     "rambda": "^7.4.0",
+    "semantic-release": "^22.0.5",
     "snobuild": "^3.0.0"
   }
 }
