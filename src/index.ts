@@ -14,6 +14,12 @@ type handler = (e: Partial<KeyboardEvent>) => void;
  *   },
  *   {capture: true}
  * )
+ * // or if you want use react
+ * export function useHotkeyMapper(...args: Parameters<typeof hotkeyMapper>) {
+ *   useEffect(() => {
+ *     return hotkeyMapper(...args);
+ *   }, [args]);
+ * }
  */
 export default function hotkeyMapper<
   K extends keyof GlobalEventHandlersEventMap
