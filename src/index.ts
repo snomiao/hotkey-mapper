@@ -1,5 +1,5 @@
 import { mapObjIndexed } from "rambda";
-type HotkeyHandler = (e: Partial<KeyboardEvent>) => void;
+export type HotkeyHandler = (e: Partial<KeyboardEvent>) => void;
 export type HotkeyHandlers = Record<string, HotkeyHandler>;
 
 /**
