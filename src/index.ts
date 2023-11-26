@@ -1,5 +1,7 @@
 import { mapObjIndexed } from "rambda";
-type handler = (e: Partial<KeyboardEvent>) => void;
+type HotkeyHandler = (e: Partial<KeyboardEvent>) => void;
+export type HotkeyHandlers = Record<string, HotkeyHandler>;
+
 /**
  * @reference view js keycode here: https://www.toptal.com/developers/keycode
  * @example
@@ -24,10 +26,10 @@ type handler = (e: Partial<KeyboardEvent>) => void;
 export default function hotkeyMapper<
   K extends keyof GlobalEventHandlersEventMap
 >(
-  mapping: Record<string, handler>,
+  mapping: HotkeyHandlers,
   options?: AddEventListenerOptions & { on?: K; target?: EventTarget }
 ) {
-  const handler: handler = (event) => {
+  const handler: HotkeyHandler = (event) => {
     if (!event.key) throw new Error("Invalid KeyboardEvent");
     if (!event.code) throw new Error("Invalid KeyboardEvent");
     const key = event.key?.toLowerCase();
@@ -44,7 +46,7 @@ export default function hotkeyMapper<
         ),
     }) as unknown as Record<keyof KeyboardEvent, boolean>;
     const mods = "meta+alt+shift+ctrl";
-    mapObjIndexed((fn: handler, hotkey: string) => {
+    mapObjIndexed((fn: HotkeyHandler, hotkey: string) => {
       const conds = `${mods}+${hotkey.toLowerCase()}`
         .replace(/win|command|search/, "meta")
         .replace(/control/, "ctrl")
