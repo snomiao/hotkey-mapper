@@ -30,8 +30,8 @@ export default function hotkeyMapper<
   options?: AddEventListenerOptions & { on?: K; target?: EventTarget }
 ) {
   const handler: HotkeyHandler = (event) => {
-    if (!event.key) throw new Error("Invalid KeyboardEvent");
-    if (!event.code) throw new Error("Invalid KeyboardEvent");
+    if (!event.key) return;// throw new Error("Invalid KeyboardEvent");
+    if (!event.code) return;// throw new Error("Invalid KeyboardEvent");
     const key = event.key?.toLowerCase();
     const code = event.code?.toLowerCase();
     const simp = event.code?.replace(/^(?:Key|Digit|Numpad)/, "").toLowerCase();
@@ -55,8 +55,8 @@ export default function hotkeyMapper<
         .map((k, i) => [k, i >= 4 === (map as any)[`${k}Key`]]);
       if (!Object.entries(Object.fromEntries(conds)).every(([, ok]) => ok))
         return;
-      event.stopPropagation?.();
       event.preventDefault?.();
+      event.stopPropagation?.();
       return fn(event);
     }, mapping);
   };
