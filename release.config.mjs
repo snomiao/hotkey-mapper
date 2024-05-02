@@ -8,6 +8,7 @@ pnpm i -D semantic-release @semantic-release/changelog
 
 3. copy ./.github/workflows/release.yml
 
+4. npm pkg set scripts.prepack="npm run build"
 */
 
 /**
