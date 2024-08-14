@@ -1,27 +1,40 @@
-# [hotkey-mapper-v1.2.6](https://github.com/snomiao/js/compare/hotkey-mapper-v1.2.5...hotkey-mapper-v1.2.6) (2023-03-23)
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## 3.0.0 (2024-08-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ver:** bump
+
+### Features
+
+* **bump:** 3 ([45a0021](https://github.com/snomiao/hotkey-mapper/commit/45a0021a363c5f4f90cd80794534c83934016174))
+* **bump:** 3 ([20de377](https://github.com/snomiao/hotkey-mapper/commit/20de377cec3b98d578c46127fb42725c4d6d511e))
+* **bump:** 3 ([2c68e11](https://github.com/snomiao/hotkey-mapper/commit/2c68e1182d926260019775616d10db4b9600b3f9))
+* **bump:** 3 ([806166d](https://github.com/snomiao/hotkey-mapper/commit/806166d1091b2929d9de07711aa861d83eeb7b37))
+* **bump:** 3 ([11cc6f0](https://github.com/snomiao/hotkey-mapper/commit/11cc6f0ff9c36bc48e72b8a0718824336885f302))
+* **bump:** 3 ([012f459](https://github.com/snomiao/hotkey-mapper/commit/012f459dcebe564988243bfe4423b104068515e1))
+* **bump:** 3 ([960a06b](https://github.com/snomiao/hotkey-mapper/commit/960a06b7c5a8f22eac62b3ff6f8fccd6d6de1ff0))
+* **ver:** BREAKING CHANGE: bump ([319d5dd](https://github.com/snomiao/hotkey-mapper/commit/319d5ddc0646c8d6d625dd7510dfcbbeacfeb272))
+* **ver:** bump ([83ed992](https://github.com/snomiao/hotkey-mapper/commit/83ed99219002950850ba1089caec61d0a244d63b))
 
 
 ### Bug Fixes
 
-* **hotkey-mapper:** optional on ([a80ed50](https://github.com/snomiao/js/commit/a80ed504f28956ea47713cca8d5e2f08f0c9c3d4))
-
-# [hotkey-mapper-v1.2.5](https://github.com/snomiao/js/compare/hotkey-mapper-v1.2.4...hotkey-mapper-v1.2.5) (2023-03-05)
-
-
-### Bug Fixes
-
-* **hotkey-mapper:** optional on ([6c904b0](https://github.com/snomiao/js/commit/6c904b047747d37d3cb10af322d1f3db3675aa5b))
-* **hotkey-mapper:** type ([578fd79](https://github.com/snomiao/js/commit/578fd790fae3140404f3ee2af4f7016ec6ad6a9c))
-* **hotkey-mapper:** ver ([924b072](https://github.com/snomiao/js/commit/924b072695e1adae5c732f2bfd837a2d735f9da0))
-* **hotkey-mapper:** ver ([90373ee](https://github.com/snomiao/js/commit/90373ee0e7c4b4a1c8130f6147aa5b949e144702))
-* **js:** sr ([8f7133c](https://github.com/snomiao/js/commit/8f7133c789ef73df70385f2131701da6a2aed22c))
-* **src:** ! hotkeydown ([a3d2231](https://github.com/snomiao/js/commit/a3d22310c9c8938531a339bb2ae2d31ac0f81e6c))
-* **src:** reference ([a09eb5e](https://github.com/snomiao/js/commit/a09eb5eb4963b01a20046d54f696c33dad6f7b41))
-
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+* **bump:** 3 ([d2b00c7](https://github.com/snomiao/hotkey-mapper/commit/d2b00c7118d4725cda70ad726e8222e3214b90c2))
+* **hotkey-mapper:** chlog ([b5c7e06](https://github.com/snomiao/hotkey-mapper/commit/b5c7e06bc74cd7c4f26bc83e12e793458fe60124))
+* **hotkey-mapper:** pkg ([c71d90e](https://github.com/snomiao/hotkey-mapper/commit/c71d90e5d138677763bfa9845982139d3d7bf4a4))
+* **hotkey-mapper:** placeholder ([f541762](https://github.com/snomiao/hotkey-mapper/commit/f541762876e133798a77ab08a1db67ed784a4221))
+* **main:** key ([05dba41](https://github.com/snomiao/hotkey-mapper/commit/05dba4157903f6148628a5d73f9050dc5cd3d3dc))
+* **main:** release ([bf972b8](https://github.com/snomiao/hotkey-mapper/commit/bf972b8c224b0bc755c6c565836f0558f992e541))
+* **main:** release config ([f2af9ca](https://github.com/snomiao/hotkey-mapper/commit/f2af9ca2a8c0bbddee1f2022b77c4f3ea16ff064))
+* **src:** hotkeymapper typing ([4408f19](https://github.com/snomiao/hotkey-mapper/commit/4408f198a0bec494cf923922ac92843cf1bfcf2a))
+* **src:** hotkeymapper typing ([543cbab](https://github.com/snomiao/hotkey-mapper/commit/543cbab84805776e5e0c1efe4e7f6622f6b76016))
+* **src:** no throw ([3d9d4ff](https://github.com/snomiao/hotkey-mapper/commit/3d9d4ff074762d9d3523e9d3c9a17ebdba7c26e8))
+* **src:** react comment ([36df475](https://github.com/snomiao/hotkey-mapper/commit/36df47551683f6e330076271446cacc38d916763))
 
 # 1.1.0 (2023-01-08)
 
