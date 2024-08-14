@@ -1,6 +1,6 @@
 {
   "name": "hotkey-mapper",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A simply frontend hotkey-mapper",
   "keywords": [
     "shortkey",
@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "build": "bun build:type && bun build:js && bun build:umd",
-    "build:js": "bun build . --outdir=dist",
+    "build:js": "bun build src/ --outdir=dist",
     "build:type": "tsc -d --noEmit false --emitDeclarationOnly --outDir dist",
     "build:umd": "bunx rollup dist/index.js --file dist/index.umd.js --format umd --name \"hotkey-mapper\"",
     "prepack": "npm run build",
