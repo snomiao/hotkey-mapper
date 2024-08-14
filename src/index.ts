@@ -67,6 +67,7 @@ export default function hotkeyMapper<
     target.removeEventListener(options?.on ?? "keydown", handler, options);
   };
 }
+export { hotkeyMapper };
 export function hotkeyDown(hotkey: string, options?: AddEventListenerOptions) {
   return new Promise<void>((r) =>
     hotkeyMapper(
