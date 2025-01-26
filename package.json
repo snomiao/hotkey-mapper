@@ -37,7 +37,8 @@
     "prepack": "npm run build",
     "prerelease": "bun run build && bun run test",
     "release": "bunx standard-version && git push --follow-tags && npm publish",
-    "test": "echo no tests yet"
+    "test": "echo no tests yet",
+    "prepare": "husky"
   },
   "dependencies": {
     "npm": "^10.8.2",
@@ -49,7 +50,9 @@
   },
   "devDependencies": {
     "@types/bun": "^1.1.6",
-    "@types/jest": "^29.5.12"
+    "@types/jest": "^29.5.12",
+    "husky": "^9.1.7",
+    "semantic-release": "^24.2.1"
   },
   "peerDependencies": {
     "typescript": "^5.5.4"
