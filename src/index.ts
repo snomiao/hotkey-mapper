@@ -1,4 +1,3 @@
-import { mapObjIndexed } from "rambda";
 export type HotkeyHandler = (e: Partial<KeyboardEvent>) => void;
 export type HotkeyHandlers = Record<string, HotkeyHandler>;
 
@@ -30,8 +29,8 @@ export default function hotkeyMapper<
   options?: AddEventListenerOptions & { on?: K; target?: EventTarget }
 ) {
   const handler: HotkeyHandler = (event) => {
-    if (!event.key) return;// throw new Error("Invalid KeyboardEvent");
-    if (!event.code) return;// throw new Error("Invalid KeyboardEvent");
+    if (!event.key) return; // throw new Error("Invalid KeyboardEvent");
+    if (!event.code) return; // throw new Error("Invalid KeyboardEvent");
     const key = event.key?.toLowerCase();
     const code = event.code?.toLowerCase();
     const simp = event.code?.replace(/^(?:Key|Digit|Numpad)/, "").toLowerCase();
@@ -46,19 +45,21 @@ export default function hotkeyMapper<
         ),
     }) as unknown as Record<keyof KeyboardEvent, boolean>;
     const mods = "meta+alt+shift+ctrl";
-    mapObjIndexed((fn: HotkeyHandler, hotkey: string) => {
-      const conds = `${mods}+${hotkey.toLowerCase()}`
-        .replace(/win|command|search/, "meta")
-        .replace(/control/, "ctrl")
-        .split("+")
-        .map((key) => key.toLowerCase().trim())
-        .map((k, i) => [k, i >= 4 === (map as any)[`${k}Key`]]);
-      if (!Object.entries(Object.fromEntries(conds)).every(([, ok]) => ok))
-        return;
-      event.preventDefault?.();
-      event.stopPropagation?.();
-      return fn(event);
-    }, mapping);
+    Object.entries(mapping).map(
+      ([hotkey, fn]: readonly [string, HotkeyHandler]) => {
+        const conds = `${mods}+${hotkey.toLowerCase()}`
+          .replace(/win|command|search/, "meta")
+          .replace(/control/, "ctrl")
+          .split("+")
+          .map((key) => key.toLowerCase().trim())
+          .map((k, i) => [k, i >= 4 === (map as any)[`${k}Key`]]);
+        if (!Object.entries(Object.fromEntries(conds)).every(([, ok]) => ok))
+          return;
+        event.preventDefault?.();
+        event.stopPropagation?.();
+        return fn(event);
+      }
+    );
   };
 
   const target = options?.target ?? globalThis;
