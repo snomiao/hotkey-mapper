@@ -48,7 +48,7 @@ export default function hotkeyMapper<
     Object.entries(mapping).map(
       ([hotkey, fn]: readonly [string, HotkeyHandler]) => {
         const conds = `${mods}+${hotkey.toLowerCase()}`
-          .replace(/win|command|search/, "meta")
+          .replace(/win|cmd|command|search/, "meta")
           .replace(/control/, "ctrl")
           .split("+")
           .map((key) => key.toLowerCase().trim())

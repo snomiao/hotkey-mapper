@@ -3,10 +3,12 @@
   "version": "3.0.8",
   "description": "A simply frontend hotkey-mapper",
   "keywords": [
-    "shortkey",
+    "shortcuts",
+    "is-hotkey",
     "hotkey",
     "addEventListener",
-    "keydown"
+    "keydown",
+    "keyup"
   ],
   "homepage": "https://github.com/snomiao/hotkey-mapper",
   "bugs": {
