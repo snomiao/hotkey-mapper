@@ -65,6 +65,7 @@ export default function hotkeyMapper<
   const target = options?.target ?? globalThis;
   target.addEventListener(options?.on ?? "keydown", handler, options);
   return function unload() {
+    if (options?.signal) return; //by pass unload if a signal is defined
     target.removeEventListener(options?.on ?? "keydown", handler, options);
   };
 }
