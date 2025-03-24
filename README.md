@@ -15,6 +15,21 @@ const unloadHotkeyMaps = hotkeyMapper({
 });
 await new Promise(r => setTimeout(r, 60e3)) // wait 1 min
 unloadHotkeyMaps()
+
+
+// or use abort controller
+const ac = new AbortController()
+const signal = ac.signal
+const unloadHotkeyMaps = hotkeyMapper({
+    "alt+i": () => console.log('init-task'),
+    "alt+t": () => console.log('tag'),
+    "alt+n": () => console.log('next-task'),
+    "alt+u": () => console.log('user'),
+    "ctrl+alt+c": () => console.log('code-action'),
+}, {signal});
+await new Promise(r => setTimeout(r, 60e3)) // wait 1 min
+ac.abort()
+
 ```
 
 ### or import by script
